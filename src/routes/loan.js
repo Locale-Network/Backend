@@ -1,5 +1,5 @@
 const express = require('express');
-const { applyForLoan, getLoanStatus } = require('../controllers/loan');
+const { applyForLoan, getLoanStatus } = require('../controller/loan');
 
 const router = express.Router();
 

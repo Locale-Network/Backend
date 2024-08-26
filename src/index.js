@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const loanRoutes = require('./routes/loanRoutes');
+const loanRoutes = require('./routes/loan');
 
 const app = express();
 
