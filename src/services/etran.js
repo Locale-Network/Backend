@@ -9,7 +9,6 @@ const verifyCompliance = async (applicationId, borrowerData) => {
     });
 
     if (response.data.status === 'Verified') {
-      // Mark the loan application as compliant
       return { status: 'Verified', applicationId };
     } else {
       return { status: 'Failed', applicationId };

@@ -5,20 +5,20 @@ const applyForLoan = async (req, res) => {
   const { borrowerId, amount } = req.body;
 
   try {
-    const application = new Loan({
+    const loan = new Loan({
       borrower: borrowerId,
       amount,
     });
 
-    await application.save();
-    const complianceResult = await verifyCompliance(application._id, req.body.borrowerData);
+    await loan.save();
+    const complianceResult = await verifyCompliance(loan._id, req.body.borrowerData);
 
     if (complianceResult.status === 'Verified') {
-      application.complianceStatus = 'Verified';
-      await application.save();
+      loan.complianceStatus = 'Verified';
+      await loan.save();
     }
 
-    res.json(application);
+    res.json(loan);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
