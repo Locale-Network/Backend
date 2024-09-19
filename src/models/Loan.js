@@ -15,14 +15,6 @@ const LoanSchema = new mongoose.Schema({
     enum: ['Pending', 'Approved', 'Rejected'],
     default: 'Pending',
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
   complianceStatus: {
     type: String,
     enum: ['Pending', 'Verified', 'Failed'],
@@ -37,6 +29,6 @@ const LoanSchema = new mongoose.Schema({
       default: 'Pending',
     },
   }],
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Loan', LoanSchema);

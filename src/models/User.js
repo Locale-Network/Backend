@@ -1,18 +1,11 @@
+const { required } = require('joi');
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  name: {
+  walletAddress: {
     type: String,
     required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
+    unique: true
   },
   role: {
     type: String,
@@ -24,10 +17,10 @@ const UserSchema = new mongoose.Schema({
     enum: ['Pending', 'Verified', 'Failed'],
     default: 'Pending',
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  accessToken: {
+    type: String,
+    required: true
+  }
+}, { timestamps: true });
 
 module.exports = mongoose.model('User', UserSchema);
